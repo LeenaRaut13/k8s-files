@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flipkart-clone-deploy
+  namespace: flipkart
+  labels:
+    app: flipkart-clone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flipkart-clone
+  template:
+    metadata:
+      labels:
+        app: flipkart-clone
+    spec:
+      containers:
+      - name: flipkart-clone
+        image: atultele/flipkart-clone
+        ports:
+        - containerPort: 3000
