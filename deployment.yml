@@ -19,3 +19,18 @@ spec:
         image: atultele/flipkart-clone
         ports:
         - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flipart-clone-service
+  namespace: flipkart
+spec:
+  selector:
+    app: flipkart-clone
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
